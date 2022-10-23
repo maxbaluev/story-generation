@@ -52,7 +52,7 @@ def generate_initial_entity_strings(premise, setting, instruct_model, num_entiti
                             name_logit_bias[tok] = -100
                 if not name_is_good:
                     continue
-                if not any([key.strip() in name.strip() or name.strip() in key.strip() for key in character_strings]) and len(name.strip()) > 0 and all([piece.strip()[0].isupper() for piece in name.strip().split()]) and all([word.lower() not in name.lower() for word in banned_name_words+name_bias_words]): # check that names are capitalized to filter out some bad cases
+                if not any([key.strip() in name.strip() or name.strip() in key.strip() for key in character_strings]) and len(name.strip()) > 0 and all([piece.strip()[0].isupper() for piece in name.strip().split()]) and all([word.lower() not in name.lower() for word in banned_name_words]): # check that names are capitalized to filter out some bad cases
                     if not any([word.strip('"') not in initial_characters_prompt and word.lower() in initial_characters_prompt.lower() for word in name.strip().split()]) and sum([1 for letter in name if letter.isupper()]) == len(name.strip().split()): # don't allow cases where it dodged our checks by changing case
                         filtered_name_continuations.append(name)
             if len(filtered_name_continuations) > 0:
@@ -70,7 +70,7 @@ def generate_initial_entity_strings(premise, setting, instruct_model, num_entiti
         found_acceptable_description = False
         logging.log(21, 'CHARACTERS PROMPT', characters_prompt)
         for j in range(5):
-            description_logit_bias = get_repetition_logit_bias(instruct_model.tokenizer, initial_characters_prompt + ' ' + ' '.join(name_bias_words), bias=-2**(j+1), bias_common_tokens=False)
+            description_logit_bias = get_repetition_logit_bias(instruct_model.tokenizer, ' '.join(banned_name_words), bias=-2**(j+1), bias_common_tokens=False)
             name_tokens = set(sum([instruct_model.tokenizer.encode(ent) + instruct_model.tokenizer.encode(' ' + ent) for ent in character_strings.keys()], []))
             for tok in name_tokens:
                 if tok in description_logit_bias:

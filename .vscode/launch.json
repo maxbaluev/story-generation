@@ -13,7 +13,19 @@
       "args": ["--setup-only", "--premise", "A fairy tale about a girl Magdalene Batrakova, who met Teddy Bear. After that, she began to speak English well and made a lot of new friends."],
       "justMyCode": true,
       "env": {
-        "OPENAI_API_KEY": "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"
+        "OPENAI_API_KEY": "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"
+      }
+    },
+    {
+      "name": "Run story generation",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/main.py",
+      "console": "integratedTerminal",
+      "args": ["--setup-only", "--premise", "Max Vydrin ex CEO ex-cart create new startup named Inita. He hired Andrei Maksimov as technical director and Eegor Eegorov as product manager, and together they made the company a unicorn.", "--summarizer", "gpt3_summarizer", "--controller", "longformer_classifier", "--loader", "alignment", "coherence", "--controller-load-dir", "emnlp22_re3_data/ckpt/relevance_reranker", "emnlp22_re3_data/ckpt/coherence_reranker", "--controller-model-string", "allenai/longformer-base-4096", "allenai/longformer-base-4096", "--save-outline-file", "output/outline_short.pkl", "--save-complete-file", "output/complete_story_short.pkl", "--log-file", "output/story_short.log"],
+      "justMyCode": true,
+      "env": {
+        "OPENAI_API_KEY": "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"
       }
     }
   ]
