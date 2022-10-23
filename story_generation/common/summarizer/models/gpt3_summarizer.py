@@ -134,6 +134,8 @@ class GPT3Summarizer(AbstractSummarizer):
                     if retry:
                         logging.warning('retrying...')
                         time.sleep(num_fails)
+            for choice in completion.choices:
+                print(choice.text)
             outputs += [completion['choices'][j]['text'] for j in range(num_completions)]
         if cut_sentence:
             for i in range(len(outputs)):
