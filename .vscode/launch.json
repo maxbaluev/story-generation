@@ -1,0 +1,20 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run plan module",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/main.py",
+      "console": "integratedTerminal",
+      "args": ["--setup-only", "--premise", "A fairy tale about a girl Magdalene Batrakova, who met Teddy Bear. After that, she began to speak English well and made a lot of new friends."],
+      "justMyCode": true,
+      "env": {
+        "OPENAI_API_KEY": "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"
+      }
+    }
+  ]
+}
