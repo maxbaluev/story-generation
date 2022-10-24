@@ -8,7 +8,7 @@ from story_generation.common.util import *
 from story_generation.common.data.data_util import add_data_args, load_dataset
 from story_generation.common.summarizer.summarizer_util import add_summarizer_args, load_summarizer
 from story_generation.common.controller.controller_util import add_controller_args, load_controller
-from story_generation.plan_module.plan import generate_outline
+from story_generation.plan_module.plan_back import generate_outline
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
